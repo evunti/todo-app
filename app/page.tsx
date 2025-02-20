@@ -1,22 +1,25 @@
-import { useState } from "react";
+"use client";
 
-function ToDo() {
-  const [task, setTask] = useState([]);
+import { use, useState } from "react";
+
+function AddTask() {
+  const [taskWindow, setTaskWindow] = useState(false);
+
+  return (
+    <div>
+      <button type="button" onClick={() => setTaskWindow(true)}>
+        Add Task
+      </button>
+      {taskWindow ? (
+        <div>
+          <p>ADD TASK</p>
+        </div>
+      ) : null}
+    </div>
+  );
 }
-export default function Home() {
-  const [tasks, setTasks] = useState([]);
+// addTodo function
+// editTodoItem function
+// deleteTodoItem fun
 
-  const getTasks = async () => {
-    const taskQuery = await fetch("http://localhost:3001/task");
-    const taskData = await taskQuery.json();
-    setTasks(taskData);
-  };
-
-  const createTask = async () => {
-    const body = JSON.stringify({});
-  };
-
-  // return jsx
-
-  return <div></div>;
-}
+export default AddTask;
