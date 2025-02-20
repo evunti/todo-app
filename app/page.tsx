@@ -1,6 +1,7 @@
 "use client";
 
 import { use, useState } from "react";
+import TaskForm from "../components/form";
 
 function AddTask() {
   const [taskWindow, setTaskWindow] = useState(false);
@@ -12,7 +13,7 @@ function AddTask() {
       </button>
       {taskWindow ? (
         <div>
-          <p>ADD TASK</p>
+          <TaskForm />
         </div>
       ) : null}
     </div>
