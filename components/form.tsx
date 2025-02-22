@@ -1,26 +1,55 @@
 import { useState } from "react";
 
-// const handleSubmit = (e) => {
-//   e.preventDefault();
-// };
-function TaskForm() {
+function TaskForm({ onSubmit }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState(null);
   const [dueDate, setDueDate] = useState(null);
-  const [completed, setCompleted] = useState(false);
+  // const [completed, setCompleted] = useState(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = { title, description, dueDate, completed };
+    console.log(formData);
+    onSubmit(formData);
+  };
   return (
-    <div>
-      <p>Add Task</p>
-      <form>
-        <input />
-        <textarea />
-        <input />
-        <label>
-          Completed:
+    <div className="formContent">
+      <form onSubmit={handleSubmit}>
+        {/* <label>
           <input type="checkbox" checked={completed} />
-        </label>
-        <button type="submit">Add Task</button>
+        </label> */}
+        <div className="titleDiv">
+          <input
+            type="text"
+            id="inputform"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Title..."
+            required
+          />
+          <button id="cancelTaskButton">X</button>
+        </div>
+
+        <div className="decriptionDiv">
+          <textarea
+            id="descriptiontex"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description..."
+          />
+        </div>
+
+        <div className="dateDiv">
+          <input
+            type="date"
+            id="inputdate"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
+          <button type="submit" id="addTaskButton">
+            Add Task
+          </button>
+        </div>
       </form>
     </div>
   );
