@@ -48,7 +48,7 @@ nav {
   width: 100px;
   background-color: #0a0a0a;
 }
-#descriptiontex {
+#descriptiontext {
   width: 300px;
   height: 165px;
   background-color: #0a0a0a;
@@ -70,6 +70,13 @@ nav {
 #cancelTaskButton {
   padding: 5px;
 }
+#optionsButton {
+  padding: 5px;
+  padding-bottom: 20px;
+}
+#checkbox {
+  border-radius: 50%;
+}
 .titleDiv {
   display: flex;
   justify-content: space-between;
@@ -82,6 +89,11 @@ nav {
   display: flex;
   justify-content: flex-start;
 }
+.decriptionItemDiv {
+}
+.dateItemDiv {
+}
+
 /* #inputdate {
   display: flex;
   flex-direction: column;
@@ -91,4 +103,19 @@ nav {
   padding: 2px;
   border: 2px solid white;
   border-radius: 5px;
+}
+.todoItemContainer {
+  /* display: grid; */
+  /* grid-template-rows: ; */
+  border: 2px solid white;
+  background-color: white;
+  color: black;
+  width: 300px;
+  height: 250px;
+  margin-top: 10px;
+  border-radius: 15px;
+}
+.todoItemsContainer {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
 }

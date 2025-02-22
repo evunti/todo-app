@@ -32,7 +32,7 @@ function TaskForm({ onSubmit }) {
 
         <div className="decriptionDiv">
           <textarea
-            id="descriptiontex"
+            id="descriptiontext"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Description..."
