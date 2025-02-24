@@ -14,6 +14,9 @@ function AddTask() {
     setFormSubmitted(true);
     setTaskData(data);
   };
+  const handleCancelTask = () => {
+    setTaskWindow(false);
+  };
   return (
     <div className="pagecontainer">
       <button id="button" type="button" onClick={() => setTaskWindow(true)}>
@@ -21,7 +24,7 @@ function AddTask() {
       </button>
       {taskWindow && !formSubmitted ? (
         <div className="taskFormContainer">
-          <TaskForm onSubmit={handleFormSubmit} />
+          <TaskForm onSubmit={handleFormSubmit} onCancel={handleCancelTask} />
         </div>
       ) : null}
       {formSubmitted && taskData ? (
@@ -32,7 +35,7 @@ function AddTask() {
     </div>
   );
 }
-// addTodo function
+
 // editTodoItem function
 // deleteTodoItem fun
 

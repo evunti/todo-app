@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-function TaskForm({ onSubmit }) {
+function TaskForm({ onSubmit, onCancel }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState(null);
   const [dueDate, setDueDate] = useState(null);
-  // const [completed, setCompleted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,9 +14,6 @@ function TaskForm({ onSubmit }) {
   return (
     <div className="formContent">
       <form onSubmit={handleSubmit}>
-        {/* <label>
-          <input type="checkbox" checked={completed} />
-        </label> */}
         <div className="titleDiv">
           <input
             type="text"
@@ -27,7 +23,9 @@ function TaskForm({ onSubmit }) {
             placeholder="Title..."
             required
           />
-          <button id="cancelTaskButton">X</button>
+          <button id="cancelTaskButton" type="button" onClick={onCancel}>
+            X
+          </button>
         </div>
 
         <div className="decriptionDiv">

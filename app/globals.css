@@ -106,6 +106,9 @@ nav {
   display: flex;
   justify-content: space-between;
 }
+#itemTitle {
+  margin-top: 10px;
+}
 
 .decriptionItemDiv {
   width: 300px;

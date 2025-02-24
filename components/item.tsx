@@ -12,8 +12,9 @@ function TodoItem({ title, description, dueDate }) {
     <div className="todoItemaContainer">
       <div className="todoItemContainer">
         <div className="titleDiv">
-          <input id="checkbox" type="checkbox" checked={completed} readOnly />
-          <h3>{title}</h3>
+          <input id="checkbox" type="checkbox" checked={completed} />
+
+          <h3 id="itemTitle">{title}</h3>
           <button id="optionsButton">...</button>
         </div>
         <div className="decriptionItemDiv">
