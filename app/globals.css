@@ -12,6 +12,12 @@
     --foreground: #ededed;
   }
 }
+/* * {
+  font-family: "Caveat", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
 
 body {
   color: var(--foreground);
@@ -33,6 +39,22 @@ nav {
   flex-direction: column;
 }
 
+.taskFormContainer {
+  border: 2px solid white;
+  width: 300px;
+  height: 250px;
+  margin-top: 10px;
+  border-radius: 15px;
+  position: relative; /* Add this to enable absolute positioning of the button */
+}
+
+.formContent {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px;
+}
+
 #button {
   border: 2px solid #ffffff;
   width: 200px;
@@ -40,73 +62,57 @@ nav {
   border-radius: 5px;
 }
 
-#inputform {
-  width: 100px;
+#inputform,
+#inputdate,
+#descriptiontext {
   background-color: #0a0a0a;
 }
+
+#inputform,
 #inputdate {
-  width: 100px;
-  background-color: #0a0a0a;
+  width: 150px;
 }
+
 #descriptiontext {
   width: 300px;
   height: 165px;
-  background-color: #0a0a0a;
 }
-.formContent {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 10px;
-  position: relative;
-}
-.taskFormContainer {
-  border: 2px solid white;
-  width: 300px;
-  height: 250px;
-  margin-top: 10px;
-  border-radius: 15px;
-}
-#cancelTaskButton {
-  padding: 5px;
-}
+
+#cancelTaskButton,
 #optionsButton {
   padding: 5px;
+}
+
+#optionsButton {
   padding-bottom: 20px;
 }
+
 #checkbox {
   border-radius: 50%;
 }
-.titleDiv {
-  display: flex;
-  justify-content: space-between;
-}
-.dateDiv {
-  display: flex;
-  justify-content: space-between;
-}
-.decriptionDiv {
-  display: flex;
-  justify-content: flex-start;
-}
-.decriptionItemDiv {
-}
-.dateItemDiv {
-}
 
-/* #inputdate {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-} */
 #addTaskButton {
   padding: 2px;
   border: 2px solid white;
   border-radius: 5px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
+
+.titleDiv,
+.dateDiv,
+.decriptionDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.decriptionItemDiv {
+  width: 300px;
+  height: 165px;
+}
+
 .todoItemContainer {
-  /* display: grid; */
-  /* grid-template-rows: ; */
   border: 2px solid white;
   background-color: white;
   color: black;
@@ -115,6 +121,7 @@ nav {
   margin-top: 10px;
   border-radius: 15px;
 }
+
 .todoItemsContainer {
   display: grid;
   grid-template-columns: 200px 200px 200px;
