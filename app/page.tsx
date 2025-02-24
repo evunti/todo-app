@@ -8,9 +8,11 @@ import TodoItem from "../components/item";
 function AddTask() {
   const [taskWindow, setTaskWindow] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [taskData, setTaskData] = useState(null);
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (data) => {
     setFormSubmitted(true);
+    setTaskData(data);
   };
   return (
     <div className="pagecontainer">
@@ -22,9 +24,11 @@ function AddTask() {
           <TaskForm onSubmit={handleFormSubmit} />
         </div>
       ) : null}
-      <div>
-        <TodoItem />
-      </div>
+      {formSubmitted && taskData ? (
+        <div className="taskFormContainer">
+          <TodoItem {...taskData} />
+        </div>
+      ) : null}
     </div>
   );
 }

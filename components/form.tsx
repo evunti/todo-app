@@ -8,7 +8,7 @@ function TaskForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = { title, description, dueDate, completed };
+    const formData = { title, description, dueDate };
     console.log(formData);
     onSubmit(formData);
   };

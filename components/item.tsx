@@ -4,15 +4,15 @@ import { useState } from "react";
 function TodoItem({ title, description, dueDate }) {
   const [completed, setCompleted] = useState(false);
 
-  const handleEdit = () => {};
+  // const handleEdit = () => {};
 
-  const deleteTodoItem = () => {};
+  // const deleteTodoItem = () => {};
 
   return (
     <div className="todoItemaContainer">
       <div className="todoItemContainer">
         <div className="titleDiv">
-          <input id="checkbox" type="checkbox" checked={completed} />
+          <input id="checkbox" type="checkbox" checked={completed} readOnly />
           <h3>{title}</h3>
           <button id="optionsButton">...</button>
         </div>
