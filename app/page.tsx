@@ -13,13 +13,21 @@ function AddTask() {
   const handleFormSubmit = (data) => {
     setFormSubmitted(true);
     setTaskData(data);
+    setTaskWindow(false);
   };
   const handleCancelTask = () => {
     setTaskWindow(false);
   };
+  const handleAddTask = () => {
+    setFormSubmitted(false);
+    setTaskWindow(true);
+  };
   return (
     <div className="pagecontainer">
-      <button id="button" type="button" onClick={() => setTaskWindow(true)}>
+      {/* <button id="button" type="button" onClick={() => setTaskWindow(true)}>
+        Add Task
+      </button> */}{" "}
+      <button id="button" type="button" onClick={handleAddTask}>
         Add Task
       </button>
       {taskWindow && !formSubmitted ? (
