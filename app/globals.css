@@ -129,7 +129,7 @@ nav {
 .todoItemsContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 20px;
+  justify-items: center;
   margin-top: 20px;
-  /* background-color: #ffffff; */
 }

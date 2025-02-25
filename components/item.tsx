@@ -15,27 +15,19 @@ function TodoItem({ title, description, dueDate }: TodoItemProps) {
   // const deleteTodoItem = () => {};
 
   return (
-    <div className="todoItemaContainer">
-      <div className="todoItemContainer">
-        <div className="titleDiv">
-          {/* <input id="checkbox" type="checkbox" checked={completed} /> */}
+    <div className="todoItemContainer">
+      <div className="titleDiv">
+        {/* <input id="checkbox" type="checkbox" checked={completed} /> */}
 
-          <h3 id="itemTitle">{title}</h3>
-          <button id="optionsButton">...</button>
-        </div>
-        <div className="decriptionItemDiv">
-          <p>{description}</p>
-        </div>
+        <h3 id="itemTitle">{title}</h3>
+        <button id="optionsButton">...</button>
+      </div>
+      <div className="decriptionItemDiv">
+        <p>{description}</p>
+      </div>
 
-        <div className="dateItemDiv">
-          <p>Due: {dueDate}</p>
-        </div>
-        {/* <button id="editbutton" onClick={handleEdit}>
-        Edit
-      </button>
-      <button id="deletebutton" onClick={() => deleteTodoItem(id)}>
-        Delete
-      </button> */}
+      <div className="dateItemDiv">
+        <p>Due: {dueDate}</p>
       </div>
     </div>
   );
