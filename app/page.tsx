@@ -7,19 +7,21 @@ import TodoItem from "../components/item";
 
 function AddTask() {
   const [taskWindow, setTaskWindow] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [taskData, setTaskData] = useState(null);
+  // const [formSubmitted, setFormSubmitted] = useState(false);
+  // const [taskData, setTaskData] = useState(null);
+  const [tasks, setTasks] = useState([]);
 
   const handleFormSubmit = (data) => {
-    setFormSubmitted(true);
-    setTaskData(data);
+    // setFormSubmitted(true);
+    // setTasks(...tasks, data);
+    setTasks((prevTasks) => [...prevTasks, data]);
     setTaskWindow(false);
   };
   const handleCancelTask = () => {
     setTaskWindow(false);
   };
   const handleAddTask = () => {
-    setFormSubmitted(false);
+    // setFormSubmitted(false);
     setTaskWindow(true);
   };
   return (
@@ -30,16 +32,21 @@ function AddTask() {
       <button id="button" type="button" onClick={handleAddTask}>
         Add Task
       </button>
-      {taskWindow && !formSubmitted ? (
+      {taskWindow ? (
         <div className="taskFormContainer">
           <TaskForm onSubmit={handleFormSubmit} onCancel={handleCancelTask} />
         </div>
       ) : null}
-      {formSubmitted && taskData ? (
+      {/* {formSubmitted && taskData ? (
         <div className="taskFormContainer">
-          <TodoItem {...taskData} />
+          <TodoItem key={index} {...taskData} />
         </div>
-      ) : null}
+      ) : null} */}
+      <div className="todoItemsContainer">
+        {tasks.map((task, index) => (
+          <TodoItem key={index} {...task} />
+        ))}
+      </div>
     </div>
   );
 }
