@@ -22,7 +22,7 @@ function TodoItem({ title, description, dueDate, onDelete }: TodoItemProps) {
   return (
     <div className="todoItemContainer">
       <div className="titleDiv">
-        {/* <input id="checkbox" type="checkbox" checked={completed} /> */}
+        <input id="checkbox" type="checkbox" />
 
         <h3 id="itemTitle">{title}</h3>
         {/* <button id="optionsButton">...</button> */}
