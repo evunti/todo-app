@@ -128,6 +128,7 @@ nav {
 }
 .dropdownContent {
   display: none;
+  position: absolute;
 }
 
 .dropdownContent.visible {
@@ -138,7 +139,6 @@ nav {
   display: flex;
   background-color: #e0dfdf;
   min-width: 50px;
-  position: absolute;
   margin-left: -31px;
   padding: 2px;
   box-shadow: 2px 2px 2px rgb(31, 31, 31, 0.8);

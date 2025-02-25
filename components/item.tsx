@@ -6,9 +6,16 @@ interface TodoItemProps {
   description: string | null;
   dueDate: string | null;
   onDelete: () => void;
+  onEdit: () => void;
 }
 
-function TodoItem({ title, description, dueDate, onDelete }: TodoItemProps) {
+function TodoItem({
+  title,
+  description,
+  dueDate,
+  onDelete,
+  onEdit,
+}: TodoItemProps) {
   // const [completed, setCompleted] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -23,15 +30,7 @@ function TodoItem({ title, description, dueDate, onDelete }: TodoItemProps) {
     <div className="todoItemContainer">
       <div className="titleDiv">
         <input id="checkbox" type="checkbox" />
-
         <h3 id="itemTitle">{title}</h3>
-        {/* <button id="optionsButton">...</button> */}
-        {/* <div className="dropdown">
-          <button id="optionsButton">...</button>
-          <div className="dropdownContent">
-            <button>Edit</button>
-            <button>Delete</button>
-          </div> */}
         <div className="dropdown">
           <button id="optionsButton" onClick={toggleDropdown}>
             ...
@@ -39,8 +38,8 @@ function TodoItem({ title, description, dueDate, onDelete }: TodoItemProps) {
           <div
             className={`dropdownContent ${dropdownVisible ? "visible" : ""}`}
           >
-            <button>Edit</button>
             <button onClick={onDelete}>Delete</button>
+            <button onClick={onEdit}>Edit</button>
           </div>
         </div>
       </div>

@@ -33,6 +33,9 @@ function AddTask() {
   const handleDeleteTask = (id: number) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
+  const handleEditTask = (id: number) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  };
   const handleAddTask = () => {
     // setFormSubmitted(false);
     setTaskWindow(true);
@@ -63,6 +66,7 @@ function AddTask() {
             description={task.description}
             dueDate={task.dueDate}
             onDelete={() => handleDeleteTask(task.id)}
+            onEdit={() => handleEditTask(task.id)}
           />
         ))}
       </div>
