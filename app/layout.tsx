@@ -1,5 +1,5 @@
 import "./globals.css";
-// import Link from "next/link";
+import Link from "next/link";
 
 // import { Caveat } from "next/font/google";
 
@@ -14,9 +14,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <nav>
-          <p>home</p>
-          {/* <Link href="/page">Home</Link> */}
-          {/* <Link href="../components/form">Completed</Link> */}
+          <Link href="/">Home</Link>
+          <Link href="/completed-page">Completed</Link>
         </nav>
         {children}
       </body>
