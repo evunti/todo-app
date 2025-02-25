@@ -5,13 +5,18 @@ import { useState } from "react";
 import TaskForm from "../components/form";
 import TodoItem from "../components/item";
 
+interface Task {
+  title: string;
+  description: string | null;
+  dueDate: string | null;
+}
 function AddTask() {
   const [taskWindow, setTaskWindow] = useState(false);
   // const [formSubmitted, setFormSubmitted] = useState(false);
   // const [taskData, setTaskData] = useState(null);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-  const handleFormSubmit = (data) => {
+  const handleFormSubmit = (data: Task) => {
     // setFormSubmitted(true);
     // setTasks(...tasks, data);
     setTasks((prevTasks) => [...prevTasks, data]);
@@ -28,15 +33,15 @@ function AddTask() {
     <div className="pagecontainer">
       {/* <button id="button" type="button" onClick={() => setTaskWindow(true)}>
         Add Task
-      </button> */}{" "}
+      </button> */}
       <button id="button" type="button" onClick={handleAddTask}>
         Add Task
       </button>
-      {taskWindow ? (
+      {taskWindow && (
         <div className="taskFormContainer">
           <TaskForm onSubmit={handleFormSubmit} onCancel={handleCancelTask} />
         </div>
-      ) : null}
+      )}
       {/* {formSubmitted && taskData ? (
         <div className="taskFormContainer">
           <TodoItem key={index} {...taskData} />

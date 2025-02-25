@@ -1,4 +1,6 @@
 import "./globals.css";
+// import Link from "next/link";
+
 // import { Caveat } from "next/font/google";
 
 // const roboto = Caveat({ weight: ["400", "700"], subsets: ["latin"] });
@@ -12,8 +14,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <nav>
-          <p>Home</p>
-          <p>Completed</p>
+          <p>home</p>
+          {/* <Link href="/page">Home</Link> */}
+          {/* <Link href="../components/form">Completed</Link> */}
         </nav>
         {children}
       </body>

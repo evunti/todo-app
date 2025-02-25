@@ -1,13 +1,24 @@
 import { useState } from "react";
 
-function TaskForm({ onSubmit, onCancel }) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState(null);
-  const [dueDate, setDueDate] = useState(null);
+interface Task {
+  title: string;
+  description: string | null;
+  dueDate: string | null;
+}
 
-  const handleSubmit = (e) => {
+interface TaskFormProps {
+  onSubmit: (data: Task) => void;
+  onCancel: () => void;
+}
+
+function TaskForm({ onSubmit, onCancel }: TaskFormProps) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [dueDate, setDueDate] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formData = { title, description, dueDate };
+    const formData: Task = { title, description, dueDate };
     console.log(formData);
     onSubmit(formData);
   };

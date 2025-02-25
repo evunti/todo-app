@@ -1,8 +1,14 @@
-import TaskForm from "./form";
-import { useState } from "react";
+// import TaskForm from "./form";
+// import { useState } from "react";
 
-function TodoItem({ title, description, dueDate }) {
-  const [completed, setCompleted] = useState(false);
+interface TodoItemProps {
+  title: string;
+  description: string | null;
+  dueDate: string | null;
+}
+
+function TodoItem({ title, description, dueDate }: TodoItemProps) {
+  // const [completed, setCompleted] = useState(false);
 
   // const handleEdit = () => {};
 
@@ -12,7 +18,7 @@ function TodoItem({ title, description, dueDate }) {
     <div className="todoItemaContainer">
       <div className="todoItemContainer">
         <div className="titleDiv">
-          <input id="checkbox" type="checkbox" checked={completed} />
+          {/* <input id="checkbox" type="checkbox" checked={completed} /> */}
 
           <h3 id="itemTitle">{title}</h3>
           <button id="optionsButton">...</button>
