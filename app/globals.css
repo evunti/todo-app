@@ -43,9 +43,10 @@ nav {
   border: 2px solid white;
   width: 300px;
   height: 250px;
-  margin-top: 10px;
   border-radius: 15px;
-  position: relative;
+  margin-top: 125px;
+  position: fixed;
+  background-color: #0a0a0a;
 }
 
 .formContent {
@@ -83,20 +84,51 @@ nav {
 #optionsButton {
   padding: 5px;
 }
-
 #optionsButton {
+  padding: 2px;
+}
+/* #optionsButton {
   padding-bottom: 20px;
+  background-color: #b6b6b6;
 }
 
+.dropdown #optionsButton {
+}
+.dropdownContent button {
+  background-color: #e0dfdf;
+  display: block;
+  position: absolute;
+  min-width: 50px;
+  box-shadow: 2px 2px 2px rgb(31, 31, 31, 0.8);
+}
+.dropdown:hover button {
+  display: block;
+}
 #checkbox {
   border-radius: 50%;
+} */
+
+.dropdownContent {
+  display: none;
 }
 
+.dropdownContent.visible {
+  display: block;
+}
+
+.dropdownContent button {
+  display: flex;
+  background-color: #e0dfdf;
+  min-width: 50px;
+  position: absolute;
+  margin-left: -31px;
+  padding: 2px;
+  box-shadow: 2px 2px 2px rgb(31, 31, 31, 0.8);
+}
 #addTaskButton {
   padding: 2px;
   border: 2px solid white;
   border-radius: 5px;
-  position: absolute;
   bottom: 10px;
   right: 10px;
 }

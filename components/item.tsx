@@ -1,18 +1,23 @@
 // import TaskForm from "./form";
-// import { useState } from "react";
+import { useState } from "react";
 
 interface TodoItemProps {
   title: string;
   description: string | null;
   dueDate: string | null;
+  onDelete: () => void;
 }
 
-function TodoItem({ title, description, dueDate }: TodoItemProps) {
+function TodoItem({ title, description, dueDate, onDelete }: TodoItemProps) {
   // const [completed, setCompleted] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   // const handleEdit = () => {};
 
   // const deleteTodoItem = () => {};
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
 
   return (
     <div className="todoItemContainer">
@@ -20,7 +25,24 @@ function TodoItem({ title, description, dueDate }: TodoItemProps) {
         {/* <input id="checkbox" type="checkbox" checked={completed} /> */}
 
         <h3 id="itemTitle">{title}</h3>
-        <button id="optionsButton">...</button>
+        {/* <button id="optionsButton">...</button> */}
+        {/* <div className="dropdown">
+          <button id="optionsButton">...</button>
+          <div className="dropdownContent">
+            <button>Edit</button>
+            <button>Delete</button>
+          </div> */}
+        <div className="dropdown">
+          <button id="optionsButton" onClick={toggleDropdown}>
+            ...
+          </button>
+          <div
+            className={`dropdownContent ${dropdownVisible ? "visible" : ""}`}
+          >
+            <button>Edit</button>
+            <button onClick={onDelete}>Delete</button>
+          </div>
+        </div>
       </div>
       <div className="decriptionItemDiv">
         <p>{description}</p>

@@ -6,6 +6,7 @@ import TaskForm from "../components/form";
 import TodoItem from "../components/item";
 
 interface Task {
+  id: number;
   title: string;
   description: string | null;
   dueDate: string | null;
@@ -16,14 +17,21 @@ function AddTask() {
   // const [taskData, setTaskData] = useState(null);
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  const handleFormSubmit = (data: Task) => {
-    // setFormSubmitted(true);
-    // setTasks(...tasks, data);
-    setTasks((prevTasks) => [...prevTasks, data]);
+  const handleFormSubmit = (data: Omit<Task, "id">) => {
+    const newTask: Task = { ...data, id: Date.now() }; // Assign a unique id
+    setTasks((prevTasks) => [...prevTasks, newTask]);
     setTaskWindow(false);
   };
+  // const handleFormSubmit = (data: Task) => {
+
+  //   setTasks((prevTasks) => [...prevTasks, data]);
+  //   setTaskWindow(false);
+  // };
   const handleCancelTask = () => {
     setTaskWindow(false);
+  };
+  const handleDeleteTask = (id: number) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
   const handleAddTask = () => {
     // setFormSubmitted(false);
@@ -48,8 +56,14 @@ function AddTask() {
         </div>
       ) : null} */}
       <div className="todoItemsContainer">
-        {tasks.map((task, index) => (
-          <TodoItem key={index} {...task} />
+        {tasks.map((task) => (
+          <TodoItem
+            key={task.id}
+            title={task.title}
+            description={task.description}
+            dueDate={task.dueDate}
+            onDelete={() => handleDeleteTask(task.id)}
+          />
         ))}
       </div>
     </div>
