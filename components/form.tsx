@@ -1,13 +1,14 @@
 import { useState } from "react";
 
 interface Task {
+  id: number;
   title: string;
   description: string | null;
   dueDate: string | null;
 }
 
 interface TaskFormProps {
-  onSubmit: (data: Task) => void;
+  onSubmit: (data: Omit<Task, "id">) => void;
   onCancel: () => void;
 }
 
@@ -18,7 +19,7 @@ function TaskForm({ onSubmit, onCancel }: TaskFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formData: Task = { title, description, dueDate };
+    const formData = { title, description, dueDate };
     console.log(formData);
     onSubmit(formData);
   };

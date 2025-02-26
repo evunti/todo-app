@@ -1,41 +1,54 @@
 // import TaskForm from "./form";
-// import { useState } from "react";
+import { useState } from "react";
 
 interface TodoItemProps {
   title: string;
   description: string | null;
   dueDate: string | null;
+  onDelete: () => void;
+  onEdit: () => void;
 }
 
-function TodoItem({ title, description, dueDate }: TodoItemProps) {
+function TodoItem({
+  title,
+  description,
+  dueDate,
+  onDelete,
+  onEdit,
+}: TodoItemProps) {
   // const [completed, setCompleted] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   // const handleEdit = () => {};
 
   // const deleteTodoItem = () => {};
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
 
   return (
-    <div className="todoItemaContainer">
-      <div className="todoItemContainer">
-        <div className="titleDiv">
-          {/* <input id="checkbox" type="checkbox" checked={completed} /> */}
+    <div className="todoItemContainer">
+      <div className="titleDiv">
+        <input id="checkbox" type="checkbox" />
+        <h3 id="itemTitle">{title}</h3>
+        <div className="dropdown">
+          <button id="optionsButton" onClick={toggleDropdown}>
+            ...
+          </button>
+          <div
+            className={`dropdownContent ${dropdownVisible ? "visible" : ""}`}
+          >
+            <button onClick={onDelete}>Delete</button>
+            <button onClick={onEdit}>Edit</button>
+          </div>
+        </div>
+      </div>
+      <div className="decriptionItemDiv">
+        <p>{description}</p>
+      </div>
 
-          <h3 id="itemTitle">{title}</h3>
-          <button id="optionsButton">...</button>
-        </div>
-        <div className="decriptionItemDiv">
-          <p>{description}</p>
-        </div>
-
-        <div className="dateItemDiv">
-          <p>Due: {dueDate}</p>
-        </div>
-        {/* <button id="editbutton" onClick={handleEdit}>
-        Edit
-      </button>
-      <button id="deletebutton" onClick={() => deleteTodoItem(id)}>
-        Delete
-      </button> */}
+      <div className="dateItemDiv">
+        <p>Due: {dueDate}</p>
       </div>
     </div>
   );
