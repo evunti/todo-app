@@ -12,23 +12,18 @@ interface Task {
   dueDate: string | null;
 }
 function AddTask() {
-  const [taskWindow, setTaskWindow] = useState(false);
-  // const [formSubmitted, setFormSubmitted] = useState(false);
-  // const [taskData, setTaskData] = useState(null);
+  const [showTaskForm, setShowTaskForm] = useState(false);
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [editTask, setEditTask] = useState<Task | null>(null);
 
   const handleFormSubmit = (data: Omit<Task, "id">) => {
-    const newTask: Task = { ...data, id: Date.now() }; // Assign a unique id
+    const newTask: Task = { ...data, id: Date.now() };
     setTasks((prevTasks) => [...prevTasks, newTask]);
-    setTaskWindow(false);
+    setShowTaskForm(false);
   };
-  // const handleFormSubmit = (data: Task) => {
 
-  //   setTasks((prevTasks) => [...prevTasks, data]);
-  //   setTaskWindow(false);
-  // };
   const handleCancelTask = () => {
-    setTaskWindow(false);
+    setShowTaskForm(false);
   };
   const handleDeleteTask = (id: number) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
@@ -38,7 +33,7 @@ function AddTask() {
   };
   const handleAddTask = () => {
     // setFormSubmitted(false);
-    setTaskWindow(true);
+    setShowTaskForm(true);
   };
   return (
     <div className="pagecontainer">
@@ -48,16 +43,10 @@ function AddTask() {
       <button id="button" type="button" onClick={handleAddTask}>
         Add Task
       </button>
-      {taskWindow && (
-        <div className="taskFormContainer">
-          <TaskForm onSubmit={handleFormSubmit} onCancel={handleCancelTask} />
-        </div>
+      {showTaskForm && (
+        <TaskForm onSubmit={handleFormSubmit} onCancel={handleCancelTask} />
       )}
-      {/* {formSubmitted && taskData ? (
-        <div className="taskFormContainer">
-          <TodoItem key={index} {...taskData} />
-        </div>
-      ) : null} */}
+
       <div className="todoItemsContainer">
         {tasks.map((task) => (
           <TodoItem
@@ -73,8 +62,5 @@ function AddTask() {
     </div>
   );
 }
-
-// editTodoItem function
-// deleteTodoItem fun
 
 export default AddTask;
