@@ -12,52 +12,73 @@ interface Task {
   dueDate: string | null;
 }
 function AddTask() {
-  const [taskWindow, setTaskWindow] = useState(false);
-  // const [formSubmitted, setFormSubmitted] = useState(false);
-  // const [taskData, setTaskData] = useState(null);
+  const [showTaskForm, setShowTaskForm] = useState(false);
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [editTask, setEditTask] = useState<Task | null>(null);
 
   const handleFormSubmit = (data: Omit<Task, "id">) => {
-    const newTask: Task = { ...data, id: Date.now() }; // Assign a unique id
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-    setTaskWindow(false);
+    if (editTask) {
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === editTask.id ? { ...task, ...data } : task
+        )
+      );
+      setEditTask(null);
+    } else {
+      const newTask: Task = { ...data, id: Date.now() };
+      setTasks((prevTasks) => [...prevTasks, newTask]);
+    }
+    setShowTaskForm(false);
   };
-  // const handleFormSubmit = (data: Task) => {
 
-  //   setTasks((prevTasks) => [...prevTasks, data]);
-  //   setTaskWindow(false);
-  // };
   const handleCancelTask = () => {
-    setTaskWindow(false);
+    setShowTaskForm(false);
+    setEditTask(null);
   };
+
   const handleDeleteTask = (id: number) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
-  const handleEditTask = (id: number) => {
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+
+  const handleEditTask = (task: Task) => {
+    setEditTask(task);
+    setShowTaskForm(true);
   };
-  const handleAddTask = () => {
-    // setFormSubmitted(false);
-    setTaskWindow(true);
-  };
+  // const handleFormSubmit = (data: Omit<Task, "id">) => {
+  //   const newTask: Task = { ...data, id: Date.now() };
+  //   setTasks((prevTasks) => [...prevTasks, newTask]);
+  //   setShowTaskForm(false);
+  // };
+
+  // const handleCancelTask = () => {
+  //   setShowTaskForm(false);
+  // };
+  // const handleDeleteTask = (id: number) => {
+  //   setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  // };
+  // const handleEditTask = (id: number) => {
+  //   setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  // };
+
+  // const handleAddTask = () => {
+  //   setShowTaskForm(true);
+  // };
   return (
     <div className="pagecontainer">
-      {/* <button id="button" type="button" onClick={() => setTaskWindow(true)}>
-        Add Task
-      </button> */}
-      <button id="button" type="button" onClick={handleAddTask}>
+      <button id="button" type="button" onClick={() => setShowTaskForm(true)}>
         Add Task
       </button>
-      {taskWindow && (
-        <div className="taskFormContainer">
-          <TaskForm onSubmit={handleFormSubmit} onCancel={handleCancelTask} />
-        </div>
+      {/* <button id="button" type="button" onClick={handleAddTask}>
+        Add Task
+      </button> */}
+      {showTaskForm && (
+        <TaskForm
+          onSubmit={handleFormSubmit}
+          onCancel={handleCancelTask}
+          initialData={editTask}
+        />
       )}
-      {/* {formSubmitted && taskData ? (
-        <div className="taskFormContainer">
-          <TodoItem key={index} {...taskData} />
-        </div>
-      ) : null} */}
+
       <div className="todoItemsContainer">
         {tasks.map((task) => (
           <TodoItem
@@ -66,15 +87,12 @@ function AddTask() {
             description={task.description}
             dueDate={task.dueDate}
             onDelete={() => handleDeleteTask(task.id)}
-            onEdit={() => handleEditTask(task.id)}
+            onEdit={() => handleEditTask(task)}
           />
         ))}
       </div>
     </div>
   );
 }
-
-// editTodoItem function
-// deleteTodoItem fun
 
 export default AddTask;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Task {
   id: number;
@@ -7,15 +7,24 @@ interface Task {
   dueDate: string | null;
 }
 
-interface TaskFormProps {
+type TaskFormProps = {
   onSubmit: (data: Omit<Task, "id">) => void;
   onCancel: () => void;
-}
+  initialData?: Omit<Task, "id"> | null;
+};
 
-function TaskForm({ onSubmit, onCancel }: TaskFormProps) {
+function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
+
+  useEffect(() => {
+    if (initialData) {
+      setTitle(initialData.title);
+      setDescription(initialData.description || "");
+      setDueDate(initialData.dueDate || "");
+    }
+  }, [initialData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,43 +33,47 @@ function TaskForm({ onSubmit, onCancel }: TaskFormProps) {
     onSubmit(formData);
   };
   return (
-    <div className="formContent">
-      <form onSubmit={handleSubmit}>
-        <div className="titleDiv">
-          <input
-            type="text"
-            id="inputform"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Title..."
-            required
-          />
-          <button id="cancelTaskButton" type="button" onClick={onCancel}>
-            X
-          </button>
-        </div>
+    <div className="taskFormContainer">
+      <div className="formContent">
+        <form onSubmit={handleSubmit}>
+          <div className="titleDiv">
+            <input
+              autoFocus
+              type="text"
+              id="inputform"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Title..."
+              required
+            />
+            <button id="cancelTaskButton" type="button" onClick={onCancel}>
+              X
+            </button>
+          </div>
 
-        <div className="decriptionDiv">
-          <textarea
-            id="descriptiontext"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Description..."
-          />
-        </div>
+          <div className="decriptionDiv">
+            <textarea
+              id="descriptiontext"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Description..."
+            />
+          </div>
 
-        <div className="dateDiv">
-          <input
-            type="date"
-            id="inputdate"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-          />
-          <button type="submit" id="addTaskButton">
-            Add Task
-          </button>
-        </div>
-      </form>
+          <div className="dateDiv">
+            <input
+              type="date"
+              id="inputdate"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+            />
+            <button type="submit" id="addTaskButton">
+              {initialData ? "Update Task" : "Add Task"}
+              Add Task
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

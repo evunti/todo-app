@@ -41,19 +41,29 @@ nav {
 
 .taskFormContainer {
   border: 2px solid white;
-  width: 300px;
-  height: 250px;
-  border-radius: 15px;
-  margin-top: 125px;
-  position: fixed;
+  margin-top: 25px;
+  position: relative;
   background-color: #0a0a0a;
+  width: 850px;
+  height: 170px;
+  border-radius: 10px;
 }
 
-.formContent {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 10px;
+.todoItemContainer {
+  border: 2px solid white;
+  background-color: white;
+  color: black;
+  width: 850px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.todoItemsContainer {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
 }
 
 #button {
@@ -62,6 +72,13 @@ nav {
   padding: 15px;
   border-radius: 5px;
   /* margin-bottom: 20px;  */
+}
+
+.formContent {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px;
 }
 
 #inputform,
@@ -76,16 +93,16 @@ nav {
 }
 
 #descriptiontext {
-  width: 300px;
-  height: 165px;
+  width: 700px;
+  height: 85px;
 }
 
 #cancelTaskButton,
 #optionsButton {
-  padding: 5px;
+  padding: 2px;
 }
 #optionsButton {
-  padding: 2px;
+  padding: 5px;
 }
 /* #optionsButton {
   padding-bottom: 20px;
@@ -162,24 +179,6 @@ nav {
 }
 
 .decriptionItemDiv {
-  width: 300px;
-  height: 165px;
-}
-
-.todoItemContainer {
-  border: 2px solid white;
-  background-color: white;
-  color: black;
-  width: 300px;
-  height: 250px;
-  margin-top: 10px;
-  border-radius: 15px;
-}
-
-.todoItemsContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  justify-items: center;
-  margin-top: 20px;
+  width: 700px;
+  height: 85px;
 }
