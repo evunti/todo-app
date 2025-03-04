@@ -29,9 +29,9 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formData = { title, description, dueDate };
-    console.log(formData);
     onSubmit(formData);
   };
+
   return (
     <div className="taskFormContainer">
       <div className="formContent">

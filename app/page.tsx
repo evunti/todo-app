@@ -11,10 +11,11 @@ interface Task {
   description: string | null;
   dueDate: string | null;
 }
+
 function AddTask() {
-  const [showTaskForm, setShowTaskForm] = useState(false);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [editTask, setEditTask] = useState<Task | null>(null);
+  const [showTaskForm, setShowTaskForm] = useState(false);
 
   const handleFormSubmit = (data: Omit<Task, "id">) => {
     if (editTask) {
@@ -32,8 +33,8 @@ function AddTask() {
   };
 
   const handleCancelTask = () => {
-    setShowTaskForm(false);
     setEditTask(null);
+    setShowTaskForm(false);
   };
 
   const handleDeleteTask = (id: number) => {
@@ -44,53 +45,33 @@ function AddTask() {
     setEditTask(task);
     setShowTaskForm(true);
   };
-  // const handleFormSubmit = (data: Omit<Task, "id">) => {
-  //   const newTask: Task = { ...data, id: Date.now() };
-  //   setTasks((prevTasks) => [...prevTasks, newTask]);
-  //   setShowTaskForm(false);
-  // };
 
-  // const handleCancelTask = () => {
-  //   setShowTaskForm(false);
-  // };
-  // const handleDeleteTask = (id: number) => {
-  //   setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
-  // };
-  // const handleEditTask = (id: number) => {
-  //   setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
-  // };
+  const handleAddTask = () => {
+    setEditTask(null);
+    setShowTaskForm(true);
+  };
 
-  // const handleAddTask = () => {
-  //   setShowTaskForm(true);
-  // };
   return (
     <div className="pagecontainer">
-      <button id="button" type="button" onClick={() => setShowTaskForm(true)}>
+      <button id="button" type="button" onClick={handleAddTask}>
         Add Task
       </button>
-      {/* <button id="button" type="button" onClick={handleAddTask}>
-        Add Task
-      </button> */}
-      {showTaskForm && (
-        <TaskForm
-          onSubmit={handleFormSubmit}
-          onCancel={handleCancelTask}
-          initialData={editTask}
-        />
-      )}
-
       <div className="todoItemsContainer">
         {tasks.map((task) => (
           <TodoItem
             key={task.id}
-            title={task.title}
-            description={task.description}
-            dueDate={task.dueDate}
+            task={task}
             onDelete={() => handleDeleteTask(task.id)}
             onEdit={() => handleEditTask(task)}
+            isEditing={editTask?.id === task.id}
+            onSubmit={handleFormSubmit}
+            onCancel={handleCancelTask}
           />
         ))}
       </div>
+      {showTaskForm && !editTask && (
+        <TaskForm onSubmit={handleFormSubmit} onCancel={handleCancelTask} />
+      )}
     </div>
   );
 }
