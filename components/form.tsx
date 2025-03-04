@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Task {
   id: number;
@@ -10,12 +10,21 @@ interface Task {
 type TaskFormProps = {
   onSubmit: (data: Omit<Task, "id">) => void;
   onCancel: () => void;
+  initialData?: Omit<Task, "id"> | null;
 };
 
-function TaskForm({ onSubmit, onCancel }: TaskFormProps) {
+function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
+
+  useEffect(() => {
+    if (initialData) {
+      setTitle(initialData.title);
+      setDescription(initialData.description || "");
+      setDueDate(initialData.dueDate || "");
+    }
+  }, [initialData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,6 +68,7 @@ function TaskForm({ onSubmit, onCancel }: TaskFormProps) {
               onChange={(e) => setDueDate(e.target.value)}
             />
             <button type="submit" id="addTaskButton">
+              {initialData ? "Update Task" : "Add Task"}
               Add Task
             </button>
           </div>
