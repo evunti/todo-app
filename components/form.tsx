@@ -69,7 +69,6 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
             />
             <button type="submit" id="addTaskButton">
               {initialData ? "Update Task" : "Add Task"}
-              Add Task
             </button>
           </div>
         </form>
