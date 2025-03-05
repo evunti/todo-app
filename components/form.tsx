@@ -5,6 +5,7 @@ interface Task {
   title: string;
   description: string | null;
   dueDate: string | null;
+  completed: boolean;
 }
 
 type TaskFormProps = {
@@ -28,7 +29,7 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formData = { title, description, dueDate };
+    const formData = { title, description, dueDate, completed: false };
     onSubmit(formData);
   };
 

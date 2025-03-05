@@ -6,6 +6,7 @@ interface Task {
   title: string;
   description: string | null;
   dueDate: string | null;
+  completed: boolean;
 }
 
 interface TodoItemProps {
@@ -15,6 +16,7 @@ interface TodoItemProps {
   isEditing: boolean;
   onSubmit: (data: Omit<Task, "id">) => void;
   onCancel: () => void;
+  onCompleted: () => void;
 }
 
 function TodoItem({
@@ -24,6 +26,7 @@ function TodoItem({
   isEditing,
   onSubmit,
   onCancel,
+  onCompleted,
 }: TodoItemProps) {
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -41,12 +44,18 @@ function TodoItem({
             title: task.title,
             description: task.description,
             dueDate: task.dueDate,
+            completed: task.completed,
           }}
         />
       ) : (
         <div>
           <div className="titleDiv">
-            <input id="checkbox" type="checkbox" />
+            <input
+              id="checkbox"
+              type="checkbox"
+              checked={task.completed}
+              onChange={onCompleted}
+            />
             <h3 id="titleItem">{task.title}</h3>
             <div className="dropdown">
               <button id="optionsButton" onClick={toggleDropdown}>

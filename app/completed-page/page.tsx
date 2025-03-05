@@ -1,33 +1,34 @@
 "use client";
-
 import { useState } from "react";
+import TodoItem from "../components/item";
+import "./globals.css";
 
-// import { useState } from "react";
-// import TodoItem from "../components/item";
+interface Task {
+  id: number;
+  title: string;
+  description: string;
+  dueDate: string;
+  completed: boolean;
+}
 
-// interface Task {
-//   id: number;
-//   title: string;
-//   description: string;
-//   dueDate: string;
-//   completed: boolean;
-// }
+interface CompletedTasksProps {
+  tasks: Task[];
+}
 
-// interface CompletedTasksProps {
-//   tasks: Task[];
-// }
+function CompletedTasks({ tasks }: CompletedTasksProps) {
+  const [completedTasks, setCompletedTasks] = useState<Task[]>(tasks);
 
-function CompletedTasks() {
-  const [getTasks, setGetTasks] = useState([]);
-
+  const handleClearHistory = () => {
+    setCompletedTasks([]);
+  };
   return (
-    <div>
-      <div className="pagecontainer">
-        <div className="todoItemsContainer">
-          {/* {tasks.map((task, index) => (
-            <TodoItem key={index} {...task} />
-          ))} */}
-        </div>
+    <div className="pagecontainer">
+      <button onClick={handleClearHistory}>Clear History</button>
+      <div className="todoItemsContainer">
+        {completedTasks.map((task, index) => (
+          <TodoItem key={index} task={task} />
+        ))}
+        <h1>404</h1>
       </div>
     </div>
   );

@@ -10,12 +10,14 @@ interface Task {
   title: string;
   description: string | null;
   dueDate: string | null;
+  completed: boolean;
 }
 
 function AddTask() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [editTask, setEditTask] = useState<Task | null>(null);
   const [showTaskForm, setShowTaskForm] = useState(false);
+  const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
 
   const handleFormSubmit = (data: Omit<Task, "id">) => {
     if (editTask) {
@@ -26,7 +28,7 @@ function AddTask() {
       );
       setEditTask(null);
     } else {
-      const newTask: Task = { ...data, id: Date.now() };
+      const newTask: Task = { ...data, id: Date.now(), completed: false };
       setTasks((prevTasks) => [...prevTasks, newTask]);
     }
     setShowTaskForm(false);
@@ -50,6 +52,16 @@ function AddTask() {
     setEditTask(null);
     setShowTaskForm(true);
   };
+  const handleCompleteTask = (id: number) => {
+    const taskToComplete = tasks.find((task) => task.id === id);
+    if (taskToComplete) {
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+      setCompletedTasks((prevCompletedTasks) => [
+        ...prevCompletedTasks,
+        { ...taskToComplete, completed: true },
+      ]);
+    }
+  };
 
   return (
     <div className="PageContainer">
@@ -63,6 +75,7 @@ function AddTask() {
             isEditing={editTask?.id === task.id}
             onSubmit={handleFormSubmit}
             onCancel={handleCancelTask}
+            onCompleted={() => handleCompleteTask(task.id)}
           />
         ))}
       </div>
