@@ -33,10 +33,10 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
   };
 
   return (
-    <div className="taskFormContainer">
+    <div className="FormContainer">
       <div className="formContent">
         <form onSubmit={handleSubmit}>
-          <div className="titleDiv">
+          <div className="titleDivForm">
             <input
               autoFocus
               type="text"
@@ -46,12 +46,12 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
               placeholder="Title..."
               required
             />
-            <button id="cancelTaskButton" type="button" onClick={onCancel}>
+            <button id="cancelFormButton" type="button" onClick={onCancel}>
               X
             </button>
           </div>
 
-          <div className="decriptionDiv">
+          <div className="decriptionDivForm">
             <textarea
               id="descriptiontext"
               value={description}
@@ -60,14 +60,14 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
             />
           </div>
 
-          <div className="dateDiv">
+          <div className="dateDivForm">
             <input
               type="date"
               id="inputdate"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
             />
-            <button type="submit" id="SubmitTaskButton">
+            <button type="submit" id="SubmitFormButton">
               {initialData ? "Update Task" : "Add Task"}
             </button>
           </div>

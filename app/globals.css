@@ -32,14 +32,14 @@ nav {
   gap: 1rem;
 }
 
-.pagecontainer {
+.PageContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.taskFormContainer {
+.FormContainer {
   border: 2px solid black;
   margin-top: 25px;
   position: relative;
@@ -50,7 +50,7 @@ nav {
   border-radius: 10px;
 }
 
-.todoItemContainer {
+.ItemContainer {
   border: 2px solid Black;
   background-color: white;
   color: black;
@@ -59,7 +59,7 @@ nav {
   border-radius: 10px;
 }
 
-.todoItemsContainer {
+.AllSubmitedTodoItemsContainer {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 20px;
@@ -99,7 +99,7 @@ nav {
   height: 85px;
 }
 
-#cancelTaskButton,
+#cancelFormButton,
 #optionsButton {
   padding: 2px;
 }
@@ -162,7 +162,7 @@ nav {
   padding: 2px;
   box-shadow: 2px 2px 2px rgb(31, 31, 31, 0.8);
 }
-#SubmitTaskButton {
+#SubmitFormButton {
   padding: 2px;
   border: 2px solid #d84040;
   background-color: #d84040;
@@ -174,9 +174,9 @@ nav {
   right: 10px;
 }
 
-.titleDiv,
-.dateDiv,
-.decriptionDiv {
+.titleDivForm,
+.dateDivForm,
+.decriptionDivForm {
   display: flex;
   justify-content: space-between;
 }
@@ -184,7 +184,7 @@ nav {
   margin-top: 10px;
 }
 
-.decriptionItemDiv {
+.decriptionDivItem {
   width: 700px;
   height: 85px;
 }

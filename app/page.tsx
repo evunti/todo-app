@@ -52,8 +52,8 @@ function AddTask() {
   };
 
   return (
-    <div className="pagecontainer">
-      <div className="todoItemsContainer">
+    <div className="PageContainer">
+      <div className="AllSubmitedTodoItemsContainer">
         {tasks.map((task) => (
           <TodoItem
             key={task.id}

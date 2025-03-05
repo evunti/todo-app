@@ -32,7 +32,7 @@ function TodoItem({
   };
 
   return (
-    <div className="todoItemContainer">
+    <div className="ItemContainer">
       {isEditing ? (
         <TaskForm
           onSubmit={onSubmit}
@@ -44,7 +44,7 @@ function TodoItem({
           }}
         />
       ) : (
-        <>
+        <div>
           <div className="titleDiv">
             <input id="checkbox" type="checkbox" />
             <h3 id="itemTitle">{task.title}</h3>
@@ -62,13 +62,13 @@ function TodoItem({
               </div>
             </div>
           </div>
-          <div className="decriptionItemDiv">
+          <div className="decriptionDivItem">
             <p>{task.description}</p>
           </div>
           <div className="dateItemDiv">
             <p>Due: {task.dueDate}</p>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
