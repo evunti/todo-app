@@ -15,9 +15,9 @@ interface Task {
 
 function AddTask() {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
   const [editTask, setEditTask] = useState<Task | null>(null);
   const [showTaskForm, setShowTaskForm] = useState(false);
-  const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
 
   const handleFormSubmit = (data: Omit<Task, "id">) => {
     if (editTask) {
@@ -28,14 +28,13 @@ function AddTask() {
       );
       setEditTask(null);
     } else {
-      const newTask: Task = { ...data, id: Date.now(), completed: false };
+      const newTask: Task = { id: Date.now(), ...data, completed: false };
       setTasks((prevTasks) => [...prevTasks, newTask]);
     }
     setShowTaskForm(false);
   };
 
   const handleCancelTask = () => {
-    setEditTask(null);
     setShowTaskForm(false);
   };
 
@@ -43,15 +42,14 @@ function AddTask() {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
-  const handleEditTask = (task: Task) => {
-    setEditTask(task);
-    setShowTaskForm(true);
+  const handleEditTask = (id: number) => {
+    const taskToEdit = tasks.find((task) => task.id === id);
+    if (taskToEdit) {
+      setEditTask(taskToEdit);
+      setShowTaskForm(true);
+    }
   };
 
-  const handleAddTask = () => {
-    setEditTask(null);
-    setShowTaskForm(true);
-  };
   const handleCompleteTask = (id: number) => {
     const taskToComplete = tasks.find((task) => task.id === id);
     if (taskToComplete) {
@@ -71,7 +69,7 @@ function AddTask() {
             key={task.id}
             task={task}
             onDelete={() => handleDeleteTask(task.id)}
-            onEdit={() => handleEditTask(task)}
+            onEdit={() => handleEditTask(task.id)}
             isEditing={editTask?.id === task.id}
             onSubmit={handleFormSubmit}
             onCancel={handleCancelTask}
@@ -82,7 +80,11 @@ function AddTask() {
       {showTaskForm && !editTask && (
         <TaskForm onSubmit={handleFormSubmit} onCancel={handleCancelTask} />
       )}
-      <button id="AddTaskButton" type="button" onClick={handleAddTask}>
+      <button
+        id="AddTaskButton"
+        type="button"
+        onClick={() => setShowTaskForm(true)}
+      >
         Add New Task
       </button>
     </div>

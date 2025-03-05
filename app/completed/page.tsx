@@ -1,8 +1,7 @@
 "use client";
-import "./globals.css";
-
+// import "./globals.css";
 import { useState } from "react";
-import TodoItem from "../components/item";
+import TodoItem from "../../components/item";
 
 interface Task {
   id: number;
