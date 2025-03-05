@@ -36,7 +36,7 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
     <div className="FormContainer">
       <div className="formContent">
         <form onSubmit={handleSubmit}>
-          <div className="titleDivForm">
+          <div className="titleDiv">
             <input
               autoFocus
               type="text"
@@ -53,7 +53,7 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
 
           <div className="decriptionDivForm">
             <textarea
-              id="descriptiontext"
+              id="descriptionTextForm"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Description..."

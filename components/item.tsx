@@ -47,7 +47,7 @@ function TodoItem({
         <div>
           <div className="titleDiv">
             <input id="checkbox" type="checkbox" />
-            <h3 id="itemTitle">{task.title}</h3>
+            <h3 id="titleItem">{task.title}</h3>
             <div className="dropdown">
               <button id="optionsButton" onClick={toggleDropdown}>
                 ...

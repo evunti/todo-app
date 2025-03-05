@@ -58,6 +58,14 @@ nav {
   height: 150px;
   border-radius: 10px;
 }
+#titleItem {
+  margin-top: 10px;
+}
+
+.decriptionDivItem {
+  width: 700px;
+  height: 85px;
+}
 
 .AllSubmitedTodoItemsContainer {
   display: grid;
@@ -94,7 +102,7 @@ nav {
   width: 150px;
 }
 
-#descriptiontext {
+#descriptionTextForm {
   width: 700px;
   height: 85px;
 }
@@ -106,6 +114,26 @@ nav {
 #optionsButton {
   padding: 5px;
 }
+
+#SubmitFormButton {
+  padding: 2px;
+  border: 2px solid #d84040;
+  background-color: #d84040;
+  box-shadow: 2px 2px 2px #d84040 0.8;
+
+  color: #e4e0e1;
+  border-radius: 5px;
+  bottom: 10px;
+  right: 10px;
+}
+
+.titleDiv,
+.dateDivForm,
+.decriptionDivForm {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* #optionsButton {
   padding-bottom: 20px;
   background-color: #b6b6b6;
@@ -161,30 +189,4 @@ nav {
   margin-left: -31px;
   padding: 2px;
   box-shadow: 2px 2px 2px rgb(31, 31, 31, 0.8);
-}
-#SubmitFormButton {
-  padding: 2px;
-  border: 2px solid #d84040;
-  background-color: #d84040;
-  box-shadow: 2px 2px 2px #d84040 0.8;
-
-  color: #e4e0e1;
-  border-radius: 5px;
-  bottom: 10px;
-  right: 10px;
-}
-
-.titleDivForm,
-.dateDivForm,
-.decriptionDivForm {
-  display: flex;
-  justify-content: space-between;
-}
-#itemTitle {
-  margin-top: 10px;
-}
-
-.decriptionDivItem {
-  width: 700px;
-  height: 85px;
 }
