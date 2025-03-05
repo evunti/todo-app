@@ -53,9 +53,6 @@ function AddTask() {
 
   return (
     <div className="pagecontainer">
-      <button id="button" type="button" onClick={handleAddTask}>
-        Add Task
-      </button>
       <div className="todoItemsContainer">
         {tasks.map((task) => (
           <TodoItem
@@ -72,6 +69,9 @@ function AddTask() {
       {showTaskForm && !editTask && (
         <TaskForm onSubmit={handleFormSubmit} onCancel={handleCancelTask} />
       )}
+      <button id="AddTaskButton" type="button" onClick={handleAddTask}>
+        Add New Task
+      </button>
     </div>
   );
 }

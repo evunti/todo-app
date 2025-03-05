@@ -67,7 +67,7 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
             />
-            <button type="submit" id="addTaskButton">
+            <button type="submit" id="SubmitTaskButton">
               {initialData ? "Update Task" : "Add Task"}
             </button>
           </div>
