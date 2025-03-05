@@ -49,17 +49,10 @@ function AddTask() {
       setShowTaskForm(true);
     }
   };
-
-  const handleCompleteTask = (id: number) => {
+  const handleCompletedTask = (id: number) => {
     const taskToComplete = tasks.find((task) => task.id === id);
-    if (taskToComplete) {
-      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
-      setCompletedTasks((prevCompletedTasks) => [
-        ...prevCompletedTasks,
-        { ...taskToComplete, completed: true },
-      ]);
-    }
-  };
+    if ()
+  }; 
 
   return (
     <div className="PageContainer">
@@ -73,7 +66,7 @@ function AddTask() {
             isEditing={editTask?.id === task.id}
             onSubmit={handleFormSubmit}
             onCancel={handleCancelTask}
-            onCompleted={() => handleCompleteTask(task.id)}
+            onCompleted={() => handleCompletedTask(task.id)}
           />
         ))}
       </div>
@@ -85,7 +78,7 @@ function AddTask() {
         type="button"
         onClick={() => setShowTaskForm(true)}
       >
-        Add New Task
+        Create Task
       </button>
     </div>
   );
