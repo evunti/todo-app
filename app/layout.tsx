@@ -1,5 +1,4 @@
 import "./globals.css";
-import Link from "next/link";
 
 // import { Caveat } from "next/font/google";
 
@@ -14,8 +13,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <nav>
-          <Link href="/">Home</Link>
-          <Link href="/completed">Completed</Link>
+          <a href="/">Home</a>
+          <a href="/completed" target="_blank" rel="noopener noreferrer">
+            Completed
+          </a>
         </nav>
         {children}
       </body>

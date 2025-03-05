@@ -5,6 +5,7 @@ interface Task {
   title: string;
   description: string | null;
   dueDate: string | null;
+  completed: boolean;
 }
 
 type TaskFormProps = {
@@ -28,12 +29,12 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formData = { title, description, dueDate };
-    console.log(formData);
+    const formData = { title, description, dueDate, completed: false };
     onSubmit(formData);
   };
+
   return (
-    <div className="taskFormContainer">
+    <div className="FormContainer">
       <div className="formContent">
         <form onSubmit={handleSubmit}>
           <div className="titleDiv">
@@ -46,28 +47,28 @@ function TaskForm({ onSubmit, onCancel, initialData }: TaskFormProps) {
               placeholder="Title..."
               required
             />
-            <button id="cancelTaskButton" type="button" onClick={onCancel}>
+            <button id="cancelFormButton" type="button" onClick={onCancel}>
               X
             </button>
           </div>
 
-          <div className="decriptionDiv">
+          <div className="decriptionDivForm">
             <textarea
-              id="descriptiontext"
+              id="descriptionTextForm"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Description..."
             />
           </div>
 
-          <div className="dateDiv">
+          <div className="dateDivForm">
             <input
               type="date"
               id="inputdate"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
             />
-            <button type="submit" id="addTaskButton">
+            <button type="submit" id="SubmitFormButton">
               {initialData ? "Update Task" : "Add Task"}
             </button>
           </div>
